@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08131c">
+  <meta name="description" content="Rajveer Verma — electrical engineering undergraduate at CSULB working on student rocketry avionics.">
+  <title>Rajveer Verma — Electrical Engineering &amp; Avionics</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08131c;
+      --bg-soft: #0d1d28;
+      --panel: #10232f;
+      --panel-light: #142b38;
+      --line: rgba(196, 224, 233, .13);
+      --text: #edf5f4;
+      --muted: #a4b7bd;
+      --quiet: #6f8992;
+      --mint: #a8f0ca;
+      --cyan: #74d9dd;
+      --orange: #ffb375;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 82% 8%, rgba(67, 141, 152, .12), transparent 31rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(196, 224, 233, .09);
+      background: rgba(8, 19, 28, .84);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid rgba(168, 240, 202, .55);
+      border-radius: 12px;
+      color: var(--mint);
+      font: 700 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: -.06em;
+      transform: rotate(-3deg);
+    }
+    .brand-copy { display: grid; line-height: 1.2; }
+    .brand-copy strong { font-size: 13px; letter-spacing: .015em; }
+    .brand-copy span { margin-top: 5px; color: var(--quiet); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 12px;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--mint); }
+    .nav-links .nav-cta {
+      padding: 9px 15px;
+      border: 1px solid rgba(168, 240, 202, .38);
+      border-radius: 999px;
+      color: var(--mint);
+    }
+    .menu-toggle { display: none; }
+
+    .hero { padding: 84px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: 68px; }
+    .eyebrow, .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--mint);
+      font: 600 10px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: var(--mint); }
+    h1 {
+      max-width: 650px;
+      margin: 22px 0 20px;
+      font-size: clamp(44px, 5.6vw, 74px);
+      font-weight: 570;
+      letter-spacing: -.065em;
+      line-height: .99;
+    }
+    h1 span { color: var(--mint); }
+    .hero-copy { max-width: 590px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .hero-copy strong { color: var(--text); font-weight: 550; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--mint); color: #092019; }
+    .button-primary:hover { background: #c2f7d8; }
+    .button-quiet { border-color: var(--line); color: var(--text); }
+    .button-quiet:hover { border-color: rgba(168, 240, 202, .45); }
+    .arrow { font-size: 16px; line-height: .7; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 11px 21px; margin-top: 40px; color: var(--quiet); font-size: 11px; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta span::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--cyan); }
+
+    .visual-card {
+      position: relative;
+      min-height: 410px;
+      overflow: hidden;
+      border: 1px solid rgba(166, 217, 218, .2);
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(115, 174, 183, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(115, 174, 183, .055) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 46%, rgba(59, 142, 150, .22), transparent 52%),
+        #0c1c27;
+      background-size: 28px 28px, 28px 28px, auto, auto;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, .25);
+    }
+    .visual-card::before, .visual-card::after { position: absolute; content: ""; pointer-events: none; }
+    .visual-card::before { inset: 13px; border: 1px solid rgba(194, 229, 227, .08); border-radius: 11px; }
+    .visual-card::after {
+      width: 210px;
+      height: 210px;
+      right: -84px;
+      bottom: -90px;
+      border: 1px solid rgba(116, 217, 221, .18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px rgba(116, 217, 221, .025), 0 0 0 48px rgba(116, 217, 221, .018);
+    }
+    .visual-top, .visual-bottom { position: absolute; z-index: 1; left: 28px; right: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .visual-top { top: 27px; color: #92aeb5; font: 10px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; }
+    .live-label { display: inline-flex; align-items: center; gap: 8px; color: var(--mint); }
+    .live-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+    .visual-bottom { bottom: 28px; color: #78949c; font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .11em; text-transform: uppercase; }
+    .hero-art { position: absolute; inset: 64px 18px 52px; width: calc(100% - 36px); height: calc(100% - 116px); }
+    .art-glow { fill: rgba(94, 214, 198, .08); }
+    .art-line { fill: none; stroke: #8ce7ca; stroke-width: 1.15; vector-effect: non-scaling-stroke; }
+    .art-line-muted { fill: none; stroke: rgba(138, 204, 207, .48); stroke-width: .85; stroke-dasharray: 4 5; vector-effect: non-scaling-stroke; }
+    .art-accent { fill: #ffb375; }
+    .art-dot { fill: #a8f0ca; }
+    .art-text { fill: #9bb8bb; font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; }
+    .art-small { fill: #6f9297; font: 7px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; }
+
+    .section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 36px; }
+    .section h2 { margin: 12px 0 0; font-size: clamp(29px, 3.6vw, 43px); font-weight: 550; letter-spacing: -.05em; line-height: 1.1; }
+    .team-title { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .team-title .role-pill { display: inline-flex; flex: 0 0 auto; align-items: center; padding: 7px 12px; font-size: 10px; font-weight: 500; letter-spacing: .02em; line-height: 1.4; white-space: nowrap; }
+    .section-intro { max-width: 420px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; }
+    .about-aside { display: flex; flex-direction: column; justify-content: space-between; min-height: 290px; }
+    .about-aside p { max-width: 380px; margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .note-card { display: flex; align-items: center; gap: 14px; margin-top: 36px; padding: 17px 18px; border: 1px solid var(--line); border-radius: 11px; background: rgba(16, 35, 47, .56); }
+    .note-icon { display: grid; flex: 0 0 38px; width: 38px; height: 38px; place-items: center; border-radius: 10px; background: rgba(168, 240, 202, .1); color: var(--mint); font-size: 17px; }
+    .note-card div:last-child { display: grid; line-height: 1.4; }
+    .note-card small { color: var(--quiet); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .note-card strong { margin-top: 4px; font-size: 12px; font-weight: 550; }
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .fact { min-height: 130px; padding: 19px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, rgba(20, 43, 56, .75), rgba(12, 28, 39, .65)); }
+    .fact-label { display: flex; align-items: center; gap: 8px; color: var(--quiet); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .fact-label i { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
+    .fact strong { display: block; margin-top: 23px; font-size: 16px; font-weight: 550; letter-spacing: -.02em; }
+
+    .work-section { background: linear-gradient(180deg, rgba(13, 29, 40, .3), transparent 75%); }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .work-card {
+      position: relative;
+      display: flex;
+      min-height: 320px;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(18, 41, 54, .96), rgba(11, 26, 37, .94));
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .work-card:hover { transform: translateY(-4px); border-color: rgba(168, 240, 202, .35); }
+    .work-card::after { position: absolute; content: ""; right: -45px; top: -64px; width: 210px; height: 210px; border: 1px solid rgba(116, 217, 221, .13); border-radius: 50%; box-shadow: 0 0 0 20px rgba(116, 217, 221, .025), 0 0 0 42px rgba(116, 217, 221, .018); }
+    .card-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
+    .project-number { color: var(--quiet); font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .role-pill { padding: 6px 10px; border: 1px solid rgba(168, 240, 202, .25); border-radius: 999px; color: var(--mint); font-size: 10px; }
+    .work-card h3 { position: relative; z-index: 1; margin: auto 0 7px; font-size: 27px; font-weight: 550; letter-spacing: -.045em; }
+    .work-card .subtitle { position: relative; z-index: 1; margin: 0; color: var(--cyan); font-size: 12px; }
+    .work-card .description { position: relative; z-index: 1; max-width: 420px; margin: 19px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .work-footer { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .work-footer span { padding: 6px 9px; border: 1px solid rgba(196, 224, 233, .11); border-radius: 6px; color: #8fa7ac; font-size: 9px; }
+    .case-link { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 20px; color: var(--mint); font-size: 11px; text-decoration: none; }
+    .case-link:hover { color: #d2ffe2; }
+    .case-study { margin-top: 30px; padding: 34px; border: 1px solid rgba(116, 217, 221, .17); border-radius: 16px; background: linear-gradient(145deg, rgba(16, 35, 47, .92), rgba(9, 23, 33, .94)); }
+    .case-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; }
+    .case-header h3 { margin: 9px 0 4px; font-size: clamp(30px, 3.6vw, 42px); font-weight: 550; letter-spacing: -.05em; line-height: 1.1; }
+    .case-subtitle { margin: 0; color: var(--cyan); font-size: 12px; }
+    .case-period { flex: 0 0 auto; padding: 12px 15px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font: 10px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; text-align: right; }
+    .case-summary { max-width: 820px; margin: 24px 0 26px; color: var(--muted); font-size: 13px; line-height: 1.85; }
+    .case-mission-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 26px; }
+    .mission-item { padding: 13px 15px; border: 1px solid var(--line); border-radius: 9px; background: rgba(7, 19, 29, .38); }
+    .mission-item small { display: block; color: var(--quiet); font: 8px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .mission-item strong { display: block; margin-top: 6px; color: var(--text); font-size: 11px; font-weight: 550; line-height: 1.55; }
+    .video-feature { display: grid; grid-template-columns: minmax(220px, .72fr) 1.28fr; align-items: center; gap: 30px; margin: 18px 0 34px; padding: 22px; border: 1px solid var(--line); border-radius: 13px; background: rgba(7, 19, 29, .48); }
+    .video-frame { width: min(100%, 300px); margin: 0 auto; overflow: hidden; border: 1px solid rgba(196, 224, 233, .14); border-radius: 10px; background: #03080c; }
+    .video-frame video { display: block; width: 100%; max-height: 600px; background: #03080c; }
+    .video-copy h4 { margin: 12px 0 8px; font-size: 20px; font-weight: 550; letter-spacing: -.035em; }
+    .video-copy p { max-width: 540px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .audio-note { display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; color: var(--mint); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .audio-note::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+    .case-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: start; margin: 26px 0 34px; }
+    .case-photo { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: #091721; }
+    .case-photo.wide { grid-column: span 2; }
+    .case-photo img { display: block; width: 100%; object-fit: cover; }
+    .case-photo.wide img { aspect-ratio: 3 / 2; }
+    .case-photo.portrait img { aspect-ratio: 3 / 4; object-fit: contain; background: #07131d; }
+    .case-photo figcaption { min-height: 42px; padding: 10px 12px; color: var(--quiet); font-size: 10px; line-height: 1.5; }
+    .case-details-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .case-detail { padding: 19px; border: 1px solid var(--line); border-radius: 11px; background: rgba(7, 19, 29, .46); }
+    .case-detail-label { color: var(--mint); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .case-detail h4 { margin: 12px 0 8px; font-size: 15px; font-weight: 550; letter-spacing: -.02em; }
+    .case-detail p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .case-detail ul { display: grid; gap: 7px; margin: 12px 0 0; padding-left: 16px; color: var(--muted); font-size: 10px; line-height: 1.65; }
+    .case-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .flow-item { padding: 14px; border: 1px solid rgba(116, 217, 221, .15); border-radius: 9px; background: rgba(116, 217, 221, .04); }
+    .flow-item small { display: block; color: var(--quiet); font: 8px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .flow-item strong { display: block; margin-top: 7px; color: var(--text); font-size: 10px; font-weight: 500; line-height: 1.55; }
+    .next-project { margin-top: 18px; padding: 23px; border: 1px solid rgba(168, 240, 202, .2); border-radius: 12px; background: linear-gradient(120deg, rgba(168, 240, 202, .07), rgba(7, 19, 29, .28)); }
+    .next-project-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .next-project-label { color: var(--mint); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .target-pill { padding: 6px 10px; border: 1px solid rgba(168, 240, 202, .23); border-radius: 999px; color: #b8d6c7; font-size: 9px; }
+    .next-project h4 { margin: 13px 0 7px; font-size: 20px; font-weight: 550; letter-spacing: -.035em; }
+    .next-project p { max-width: 800px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+
+    .contact { padding: 80px 0 88px; }
+    .contact-box { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 40px; overflow: hidden; padding: 38px 42px; border: 1px solid rgba(168, 240, 202, .23); border-radius: 16px; background: radial-gradient(ellipse at 91% 50%, rgba(94, 214, 198, .12), transparent 33%), #10232f; }
+    .contact-box::after { position: absolute; content: ""; top: -110px; right: 12%; width: 240px; height: 240px; border: 1px solid rgba(116, 217, 221, .12); border-radius: 50%; box-shadow: 0 0 0 23px rgba(116, 217, 221, .025), 0 0 0 48px rgba(116, 217, 221, .018); }
+    .contact-copy { position: relative; z-index: 1; }
+    .contact-copy h2 { margin: 10px 0 8px; font-size: clamp(28px, 3.5vw, 40px); font-weight: 550; letter-spacing: -.05em; }
+    .contact-copy p { max-width: 540px; margin: 0; color: var(--muted); font-size: 12px; }
+    .contact-action { position: relative; z-index: 1; flex: 0 0 auto; }
+    .contact-links { display: grid; gap: 8px; margin-top: 13px; }
+    .contact-links a { color: var(--muted); font-size: 10px; text-decoration: none; }
+    .contact-links a:hover { color: var(--mint); }
+    .site-footer { padding: 20px 0 30px; border-top: 1px solid var(--line); color: var(--quiet); font-size: 10px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .footer-inner a { color: var(--muted); text-decoration: none; }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 35px; }
+      .visual-card { min-height: 350px; }
+      .about-grid { gap: 40px; }
+      .work-card { min-height: 340px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(var(--max), calc(100% - 36px)); }
+      .nav { height: 68px; }
+      .menu-toggle {
+        display: inline-grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: transparent;
+        color: var(--text);
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .nav-links {
+        position: absolute;
+        display: none;
+        top: 68px;
+        left: 0;
+        right: 0;
+        align-items: stretch;
+        gap: 0;
+        padding: 9px 18px 15px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(8, 19, 28, .97);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 13px 5px; }
+      .nav-links .nav-cta { width: fit-content; margin-top: 7px; padding: 9px 14px; }
+      .hero { padding: 56px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      h1 { max-width: 520px; font-size: clamp(45px, 13vw, 64px); }
+      .hero-copy { font-size: 14px; }
+      .hero-meta { margin-top: 27px; }
+      .visual-card { min-height: 330px; }
+      .section { padding: 68px 0; }
+      .section-head { display: block; margin-bottom: 28px; }
+      .section-intro { margin-top: 17px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-aside { min-height: auto; }
+      .facts { gap: 9px; }
+      .fact { min-height: 116px; padding: 15px; }
+      .fact strong { margin-top: 17px; font-size: 14px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card { min-height: 300px; padding: 22px; }
+      .case-header { display: block; }
+      .case-period { width: fit-content; margin-top: 17px; text-align: left; }
+      .case-study { margin-top: 22px; padding: 21px; }
+      .case-mission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-feature { grid-template-columns: minmax(190px, .8fr) 1.2fr; gap: 20px; padding: 17px; }
+      .case-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .case-photo.wide { grid-column: span 2; }
+      .case-details-grid { grid-template-columns: 1fr; }
+      .case-flow { grid-template-columns: 1fr; }
+      .contact { padding: 60px 0 66px; }
+      .contact-box { display: block; padding: 27px 24px; }
+      .contact-action { margin-top: 23px; }
+      .case-gallery { grid-template-columns: 1fr; }
+      .case-photo.wide { grid-column: auto; }
+      .video-feature { grid-template-columns: 1fr; gap: 20px; padding: 17px; }
+      .video-frame { width: min(100%, 280px); }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Rajveer Verma home">
+        <span class="brand-mark">RV</span>
+        <span class="brand-copy"><strong>Rajveer Verma</strong><span>Electrical Engineering</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#beach-launch-team">Beach Launch Team</a>
+        <a href="#schedule-i">Schedule I</a>
+        <a class="nav-cta" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Electrical engineering · Avionics</div>
+          <h1>Building the electronics behind <span>student rocketry.</span></h1>
+          <p class="hero-copy">I’m a third-year electrical engineering undergraduate at <strong>California State University, Long Beach</strong>, working with student rocketry teams on avionics.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#experience">Explore my experience <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button button-quiet" href="#contact">Get in touch</a>
+          </div>
+          <div class="hero-meta" aria-label="Quick profile details">
+            <span>CSULB</span><span>Third-year undergraduate</span><span>Student rocketry</span>
+          </div>
+        </div>
+
+        <div class="visual-card" aria-label="Decorative avionics-inspired technical illustration">
+          <div class="visual-top"><span class="live-label">FLIGHT SYSTEMS / PORTFOLIO</span><span>RV—01</span></div>
+          <svg class="hero-art" viewBox="0 0 520 340" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="rocketGlow" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#a8f0ca" stop-opacity=".18" />
+                <stop offset="1" stop-color="#a8f0ca" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <circle class="art-glow" cx="265" cy="170" r="111" />
+            <circle class="art-line-muted" cx="265" cy="170" r="132" />
+            <circle class="art-line-muted" cx="265" cy="170" r="99" />
+            <path class="art-line-muted" d="M80 170h370M265 25v290" />
+            <path fill="url(#rocketGlow)" d="M265 58c-17 21-24 51-25 88l-25 79 29-13 7 46h28l7-46 29 13-25-79c-1-37-8-67-25-88Z" />
+            <path class="art-line" d="M265 58c-17 21-24 51-25 88l-25 79 29-13 7 46h28l7-46 29 13-25-79c-1-37-8-67-25-88Z" />
+            <path class="art-line" d="M240 146h50M238 177h54M245 212h40M251 234h28" />
+            <path class="art-line-muted" d="M176 101h-48V80H96M353 107h48V83h27M202 229h-38v29h-32M329 226h39v26h37" />
+            <circle class="art-dot" cx="96" cy="80" r="3" /><circle class="art-dot" cx="428" cy="83" r="3" />
+            <circle class="art-accent" cx="132" cy="258" r="3" /><circle class="art-accent" cx="405" cy="252" r="3" />
+            <text class="art-text" x="87" y="67">SYSTEM / A</text><text class="art-small" x="87" y="96">SIGNAL PATH</text>
+            <text class="art-text" x="382" y="68">SYSTEM / B</text><text class="art-small" x="382" y="98">FLIGHT DESIGN</text>
+            <text class="art-text" x="72" y="281">BUILD</text><text class="art-small" x="72" y="294">ENGINEERING</text>
+            <text class="art-text" x="382" y="276">TEST</text><text class="art-small" x="382" y="289">ITERATION</text>
+            <text class="art-small" x="241" y="297">CSULB · LONG BEACH, CA</text>
+          </svg>
+          <div class="visual-bottom"><span>Avionics / Rocketry</span><span>33° 46′ N · 118° 11′ W</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">01 / Profile</div><h2>Curious about how systems fly.</h2></div>
+          <p class="section-intro">Electrical engineering student focused on practical, team-based work in aerospace and student rocketry.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-aside">
+            <p>I’m pursuing electrical engineering at CSULB and contributing to two student rocketry projects. My hands-on work includes harness fabrication, connector termination, sensor and valve wiring, and bench checks for the Theseus liquid propulsion rocket.</p>
+            <div class="note-card"><span class="note-icon" aria-hidden="true">⌁</span><div><small>Current direction</small><strong>Electrical engineering · Aerospace</strong></div></div>
+          </div>
+          <div class="facts" aria-label="Profile at a glance">
+            <div class="fact"><div class="fact-label"><i></i>Education</div><strong>Electrical Engineering</strong></div>
+            <div class="fact"><div class="fact-label"><i></i>University</div><strong>California State University, Long Beach</strong></div>
+            <div class="fact"><div class="fact-label"><i></i>Class standing</div><strong>Third-year undergraduate</strong></div>
+            <div class="fact"><div class="fact-label"><i></i>Technical interest</div><strong>Avionics &amp; rocketry</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work-section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">02 / Team experience</div><h2>Learning by building together.</h2></div>
+          <p class="section-intro">Current roles on a liquid propulsion rocket team and a separate student-run rocketry project.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="card-top"><span class="project-number">TEAM / 01</span><span class="role-pill">Avionics Lead</span></div>
+            <h3>Beach Launch Team</h3>
+            <p class="subtitle">Liquid propulsion rocket team</p>
+            <p class="description">Avionics lead on Beach Launch Team. The case study below covers my January–April 2026 work on the Theseus rocket as an Avionics Member.</p>
+            <div class="work-footer"><span>Student rocketry</span><span>Liquid propulsion</span><span>Avionics</span></div>
+            <a class="case-link" href="#theseus">View Theseus case study <span aria-hidden="true">↘</span></a>
+          </article>
+          <article class="work-card">
+            <div class="card-top"><span class="project-number">PROJECT / 02</span><span class="role-pill">Avionics Co-Lead</span></div>
+            <h3>Schedule I</h3>
+            <p class="subtitle">Student-run rocketry project</p>
+            <p class="description">Avionics co-lead since August 2026 on an ongoing effort to develop a remote-operations framework for collegiate rocketry.</p>
+            <div class="work-footer"><span>Student rocketry</span><span>Avionics</span><span>Team leadership</span></div>
+            <a class="case-link" href="#schedule-i">View Schedule I case study <span aria-hidden="true">↘</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="beach-launch-team">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">03 / Team experience</div><h2 class="team-title">Beach Launch Team <span class="role-pill">Avionics Lead</span></h2></div>
+          <p class="section-intro">Liquid propulsion rocketry team. I serve as Avionics Lead, with project roles as Avionics Member on Theseus and Avionics Lead on Theseus II.</p>
+        </div>
+        <article class="case-study" id="theseus" aria-labelledby="theseus-title">
+          <div class="case-header">
+            <div>
+              <div class="section-kicker">Vehicle / 01 · Beach Launch Team</div>
+              <h3 id="theseus-title">Theseus</h3>
+              <p class="case-subtitle">Avionics Member · Electrical harnessing, instrumentation and checkout</p>
+            </div>
+            <div class="case-period">ROLE<br>Avionics Member<br><br>PERIOD<br>January – April 2026</div>
+          </div>
+          <p class="case-summary">Theseus was Beach Launch Team’s liquid bi-propellant rocket, burning kerosene and liquid oxygen (LOX) through an LR-101 engine. I worked on its electrical interfaces, including solenoid valve, pressure transducer and power-line harnessing. I also built a custom DB37 harness for the LabJack T7 Pro, checked pressure readings through the LabJack GUI, tested solenoid actuation with the team’s relay switchbox, and assembled a 24 V to 5 V converter board for the LabJack module.</p>
+
+          <div class="case-mission-grid" aria-label="Theseus vehicle and flight details">
+            <div class="mission-item"><small>Propulsion</small><strong>Liquid bi-propellant</strong></div>
+            <div class="mission-item"><small>Propellants</small><strong>Kerosene + LOX</strong></div>
+            <div class="mission-item"><small>Engine</small><strong>LR-101</strong></div>
+            <div class="mission-item"><small>Flight</small><strong>April 19, 2026<br>Friends of Amateur Rocketry (FAR) site<br>~4,000 ft apogee</strong></div>
+          </div>
+
+          <div class="video-feature">
+            <div class="video-frame">
+              <video controls muted playsinline preload="metadata" poster="assets/theseus/theseus-harness-poster.webp" aria-label="Silent walkthrough of the Theseus wiring harnesses and connectors with the skin removed">
+                <source src="assets/theseus/theseus-harness-muted.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+              </video>
+            </div>
+            <div class="video-copy">
+              <div class="section-kicker">Video walkthrough · 32 seconds</div>
+              <h4>Harnesses and connectors throughout Theseus.</h4>
+              <p>A walkthrough of the rocket with its skin removed, showing wiring harnesses and connectors throughout the vehicle.</p>
+            </div>
+          </div>
+
+          <div class="case-gallery" aria-label="Theseus workshop and launch-site photos">
+            <figure class="case-photo wide">
+              <img src="assets/theseus/theseus-workshop.webp" alt="Beach Launch Team members working around the pink Theseus rocket in the workshop." loading="lazy" decoding="async">
+              <figcaption>Theseus and the team in the workshop.</figcaption>
+            </figure>
+            <figure class="case-photo wide">
+              <img src="assets/theseus/theseus-workbench.webp" alt="Close view of the pink Theseus rocket resting on a workbench." loading="lazy" decoding="async">
+              <figcaption>Theseus during a shop work session.</figcaption>
+            </figure>
+            <figure class="case-photo portrait">
+              <img src="assets/theseus/buck-converter-labjack-test.webp" alt="LabJack T7 Pro powered during a bench test, with the buck-converter board and test equipment visible." loading="lazy" decoding="async">
+              <figcaption>Bench verification: the converter successfully powered the LabJack T7 Pro.</figcaption>
+            </figure>
+            <figure class="case-photo wide">
+              <img src="assets/theseus/launch-site-cabling.webp" alt="Rajveer holding a cable bundle beside the rocket and ground-support equipment at the launch site." loading="lazy" decoding="async">
+              <figcaption>Holding the recovered ground-side quick disconnect (QD) harness after launch.</figcaption>
+            </figure>
+            <figure class="case-photo portrait">
+              <img src="assets/theseus/rajveer-at-launch-stand.webp" alt="Rajveer standing on the launch structure beside Theseus." loading="lazy" decoding="async">
+              <figcaption>Theseus on its launch structure.</figcaption>
+            </figure>
+            <figure class="case-photo portrait">
+              <img src="assets/theseus/theseus-launch-site.webp" alt="Rajveer standing beside the tall pink and yellow Theseus rocket at the launch site." loading="lazy" decoding="async">
+              <figcaption>Theseus on the rail ready for launch.</figcaption>
+            </figure>
+          </div>
+
+          <div class="case-details-grid">
+            <article class="case-detail">
+              <div class="case-detail-label">01 / Interconnects</div>
+              <h4>Harnessing &amp; connectors</h4>
+              <p>Wired solenoid valves, pressure transducers and power lines. Soldered and crimped secure Deutsch, EC5 and Molex connectors.</p>
+              <ul><li>Made a custom DB37 harness for the LabJack T7 Pro.</li><li>Spliced and routed harness connections to the pressure transducers.</li></ul>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">02 / Checkout</div>
+              <h4>Instrumentation &amp; actuation</h4>
+              <p>Connected the harnesses to the control module and checked the sensor and valve paths.</p>
+              <ul><li>Read pressure transducer data with the LabJack GUI.</li><li>Tested solenoid actuation through a relay switchbox wired to the harnesses.</li></ul>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">03 / Power</div>
+              <h4>24 V to 5 V converter</h4>
+              <p>Soldered a buck converter onto a custom perfboard with screw-terminal hookups.</p>
+              <ul><li>Provided a 5 V USB output from the 24 V power line.</li><li>Prepared the output to power the LabJack module in flight.</li></ul>
+            </article>
+          </div>
+
+          <div class="case-flow" aria-label="Electrical paths checked during the project">
+            <div class="flow-item"><small>Pressure readout</small><strong>Pressure transducers → DB37 harness → LabJack T7 Pro → LabJack GUI</strong></div>
+            <div class="flow-item"><small>Valve checkout</small><strong>Relay switchbox → harness → solenoid valves</strong></div>
+            <div class="flow-item"><small>Module power</small><strong>24 V line → buck converter → 5 V USB → LabJack</strong></div>
+          </div>
+
+        </article>
+
+        <article class="case-study" id="theseus-ii" aria-labelledby="theseus-ii-title">
+          <div class="case-header">
+            <div>
+              <div class="section-kicker">Vehicle / 02 · Beach Launch Team</div>
+              <h3 id="theseus-ii-title">Theseus II</h3>
+              <p class="case-subtitle">Avionics Lead · Vehicle electrical systems and subsystem improvements</p>
+            </div>
+            <div class="case-period">ROLE<br>Avionics Lead<br><br>STATUS<br>Work in progress<br><br>ENGINE<br>LR-101 reused</div>
+          </div>
+          <p class="case-summary">I’m leading avionics for Theseus II while working with the team on improvements across all subsystem levels and reusing the LR-101 engine. The team is targeting a static fire and launch within the next 12 months.</p>
+          <div class="case-details-grid">
+            <article class="case-detail">
+              <div class="case-detail-label">01 / Interconnects</div>
+              <h4>Harnesses &amp; connectors</h4>
+              <p>Developing new wiring harnesses and connectors to make the electrical layout cleaner and improve on the clunky previous design.</p>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">02 / Valve protection</div>
+              <h4>Solenoid flyback protection</h4>
+              <p>Implementing flyback diodes to protect the solenoid valve circuits from inductive voltage transients when the coils switch off.</p>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">03 / Ignition</div>
+              <h4>Safety-focused ignition circuit</h4>
+              <p>Designing a new ignition circuit with safety in mind and clear visual indicators for system status.</p>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section work-section" id="schedule-i">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker">04 / Current project</div><h2>Remote operations for collegiate rocketry.</h2></div>
+          <p class="section-intro">Schedule I is developing a framework intended to isolate operators from rocket procedures such as LOX fill and make launch-site operations more streamlined.</p>
+        </div>
+        <article class="case-study" aria-labelledby="schedule-i-title">
+          <div class="case-header">
+            <div>
+              <div class="section-kicker">Student-run rocketry project · Schedule I</div>
+              <h3 id="schedule-i-title">Avionics co-lead</h3>
+              <p class="case-subtitle">Remote operations, avionics control and electrical integration</p>
+            </div>
+            <div class="case-period">STATUS<br>Work in progress<br><br>STARTED<br>August 2026</div>
+          </div>
+          <p class="case-summary">Schedule I aims to establish a framework other collegiate rocketry projects can build on, including remote control of procedures such as LOX fill using solenoid-actuated ball valves. The project’s goal is to improve operational safety by reducing time spent near the rocket, especially during LOX fill, while streamlining teams’ work at launch sites. These are project goals; the control system and electrical integration described here are still in development.</p>
+
+          <div class="case-details-grid">
+            <article class="case-detail">
+              <div class="case-detail-label">01 / Control board</div>
+              <h4>Avionics PCB design</h4>
+              <p>I’m designing a Power/Control PCB to control solenoid valve actuation, servo operation, and current channels for ignition circuitry.</p>
+              <ul><li>Solenoid valve actuation is controlled through MOSFET gate drivers.</li><li>Digital PWM signals from our STM32 microcontroller pass through op-amp buffer stages for servo operation.</li><li>MOSFETs and current-sense comparators support ignition-circuit arming and current measurement.</li></ul>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">02 / System integration</div>
+              <h4>DB37 electrical interface</h4>
+              <p>The board is being designed around a DB37 connection to integrate with the broader electrical system.</p>
+              <ul><li>System interfaces include separate power-distribution and instrumentation boards.</li><li>Instrumentation includes thermocouples and pressure transducers.</li></ul>
+            </article>
+            <article class="case-detail">
+              <div class="case-detail-label">03 / In progress</div>
+              <h4>Connectors &amp; harnesses</h4>
+              <p>Alongside the PCB design, I’m sourcing connectors and preparing wiring harnesses for the system.</p>
+              <ul><li>Preparing the electrical interconnects for board-to-board integration.</li><li>Supporting a cohesive avionics system across control, power and instrumentation.</li></ul>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-copy"><div class="section-kicker">05 / Contact</div><h2>Let’s talk engineering.</h2><p>I’m interested in connecting with people working across electrical engineering, aerospace and rocketry.</p></div>
+          <div class="contact-action">
+            <a class="button button-primary" href="mailto:rajsverma03@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a>
+            <div class="contact-links">
+              <a href="mailto:rajsverma03@gmail.com">rajsverma03@gmail.com</a>
+              <a href="tel:+17149518993">714-951-8993</a>
+              <a href="https://www.linkedin.com/in/rajveer-verma-ba58a0265/" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner"><span>© <span id="year"></span> Rajveer Verma · Electrical Engineering</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+    }));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
