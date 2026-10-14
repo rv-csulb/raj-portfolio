@@ -147,6 +147,9 @@
       background-size: 28px 28px, 28px 28px, auto, auto;
       box-shadow: 0 24px 90px rgba(0, 0, 0, .25);
     }
+    .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; }
+    .photo-card .visual-top, .photo-card .visual-bottom { color: #f2f7f5; text-shadow: 0 1px 12px rgba(0, 0, 0, .85); }
+    .photo-card .visual-top .live-label { color: var(--mint); }
     .visual-card::before, .visual-card::after { position: absolute; content: ""; pointer-events: none; }
     .visual-card::before { inset: 13px; border: 1px solid rgba(194, 229, 227, .08); border-radius: 11px; }
     .visual-card::after {
@@ -383,32 +386,10 @@
           </div>
         </div>
 
-        <div class="visual-card" aria-label="Decorative avionics-inspired technical illustration">
-          <div class="visual-top"><span class="live-label">FLIGHT SYSTEMS / PORTFOLIO</span><span>RV—01</span></div>
-          <svg class="hero-art" viewBox="0 0 520 340" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="rocketGlow" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="#a8f0ca" stop-opacity=".18" />
-                <stop offset="1" stop-color="#a8f0ca" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-            <circle class="art-glow" cx="265" cy="170" r="111" />
-            <circle class="art-line-muted" cx="265" cy="170" r="132" />
-            <circle class="art-line-muted" cx="265" cy="170" r="99" />
-            <path class="art-line-muted" d="M80 170h370M265 25v290" />
-            <path fill="url(#rocketGlow)" d="M265 58c-17 21-24 51-25 88l-25 79 29-13 7 46h28l7-46 29 13-25-79c-1-37-8-67-25-88Z" />
-            <path class="art-line" d="M265 58c-17 21-24 51-25 88l-25 79 29-13 7 46h28l7-46 29 13-25-79c-1-37-8-67-25-88Z" />
-            <path class="art-line" d="M240 146h50M238 177h54M245 212h40M251 234h28" />
-            <path class="art-line-muted" d="M176 101h-48V80H96M353 107h48V83h27M202 229h-38v29h-32M329 226h39v26h37" />
-            <circle class="art-dot" cx="96" cy="80" r="3" /><circle class="art-dot" cx="428" cy="83" r="3" />
-            <circle class="art-accent" cx="132" cy="258" r="3" /><circle class="art-accent" cx="405" cy="252" r="3" />
-            <text class="art-text" x="87" y="67">SYSTEM / A</text><text class="art-small" x="87" y="96">SIGNAL PATH</text>
-            <text class="art-text" x="382" y="68">SYSTEM / B</text><text class="art-small" x="382" y="98">FLIGHT DESIGN</text>
-            <text class="art-text" x="72" y="281">BUILD</text><text class="art-small" x="72" y="294">ENGINEERING</text>
-            <text class="art-text" x="382" y="276">TEST</text><text class="art-small" x="382" y="289">ITERATION</text>
-            <text class="art-small" x="241" y="297">CSULB · LONG BEACH, CA</text>
-          </svg>
-          <div class="visual-bottom"><span>Avionics / Rocketry</span><span>33° 46′ N · 118° 11′ W</span></div>
+        <div class="visual-card photo-card">
+          <img class="hero-photo" src="assets/theseus/theseus-launch-site.webp" alt="Rajveer standing beside Theseus on its launch rail before launch.">
+          <div class="visual-top"><span class="live-label">BEACH LAUNCH TEAM / THESEUS</span><span>FLIGHT DAY / 2026</span></div>
+          <div class="visual-bottom"><span>Liquid propulsion</span><span>April 19 · FAR</span></div>
         </div>
       </div>
     </section>
@@ -519,10 +500,6 @@
             <figure class="case-photo portrait">
               <img src="assets/theseus/rajveer-at-launch-stand.webp" alt="Rajveer standing on the launch structure beside Theseus." loading="lazy" decoding="async">
               <figcaption>Theseus on its launch structure.</figcaption>
-            </figure>
-            <figure class="case-photo portrait">
-              <img src="assets/theseus/theseus-launch-site.webp" alt="Rajveer standing beside the tall pink and yellow Theseus rocket at the launch site." loading="lazy" decoding="async">
-              <figcaption>Theseus on the rail ready for launch.</figcaption>
             </figure>
           </div>
 
